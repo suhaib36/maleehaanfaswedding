@@ -738,53 +738,52 @@
       position: relative;
       z-index: 3;
       margin: 18px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    .hero-blessings-kicker {
-      font-family: var(--font-sans);
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--blush);
-      margin-bottom: 10px;
+    .hero-initials-lockup {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 26px;
+      border-radius: 999px;
     }
 
-    .hero-hosts {
+    .hero-initials-row {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .hero-initial-letter {
       font-family: var(--font-serif);
-      font-size: clamp(1rem, 3.8vw, 1.15rem);
-      color: var(--ivory);
-      font-weight: 500;
-      line-height: 1.45;
-      margin-bottom: 16px;
-    }
-
-    .hero-hosts span {
-      display: block;
-      font-style: italic;
-      font-size: 0.92rem;
-      color: rgba(243, 217, 221, 0.9);
-      font-weight: 400;
-      margin-top: 2px;
-    }
-
-    .couple-name {
-      font-family: var(--font-serif);
-      font-size: clamp(2.15rem, 8.6vw, 2.8rem);
+      font-size: clamp(4.4rem, 18vw, 5.8rem);
       font-weight: 600;
-      line-height: 1.06;
+      line-height: 0.95;
       letter-spacing: 0.02em;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+      text-shadow: 0 6px 26px rgba(0, 0, 0, 0.48);
     }
 
-    .couple-amp {
+    .hero-initial-amp {
       font-family: var(--font-script);
-      font-size: clamp(1.9rem, 7vw, 2.35rem);
+      font-size: clamp(2.8rem, 11vw, 3.6rem);
       color: var(--blush);
-      display: block;
-      margin: 2px 0;
       line-height: 1;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+      text-shadow: 0 3px 16px rgba(0, 0, 0, 0.4);
+      transform: translateY(4px);
+    }
+
+    .hero-arabic-monogram {
+      font-family: var(--font-arabic);
+      font-size: clamp(1.35rem, 5vw, 1.65rem);
+      color: rgba(234, 211, 161, 0.85);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
     }
 
     .hero-bottom-meta {
@@ -1482,20 +1481,19 @@
               <p class="bismillah-meaning">In the name of Allah, the Most Gracious, the Most Merciful</p>
             </div>
 
-            <!-- Bride's Family Header & Couple Names -->
+            <!-- Initials Only on First Page -->
             <div class="hero-center-names">
-              <p class="hero-blessings-kicker">With the Blessings of Allah (SWT)</p>
-              <p class="hero-hosts">
-                Mrs. &amp; Mr. Ishrat Husain
-                <span>request the honour of your presence at the Nikah of</span>
-              </p>
-
-              <h1 class="couple-name gold-text">Maleeha Ishrat</h1>
-              <span class="couple-amp">&amp;</span>
-              <h2 class="couple-name gold-text">Syed Anfas</h2>
+              <div class="hero-initials-lockup" aria-label="Couple Initials M and A">
+                <div class="hero-arabic-monogram" lang="ar" dir="rtl" aria-hidden="true">م &amp; ا</div>
+                <div class="hero-initials-row">
+                  <span class="hero-initial-letter gold-text">M</span>
+                  <span class="hero-initial-amp">&amp;</span>
+                  <span class="hero-initial-letter gold-text">A</span>
+                </div>
+              </div>
             </div>
 
-            <!-- Date & Venue Summary -->
+            <!-- Date Whisper -->
             <div class="hero-bottom-meta">
               <div class="hero-date-pill">
                 <span>18</span>
@@ -1503,10 +1501,7 @@
                 <span>12</span>
                 <span aria-hidden="true">•</span>
                 <span>2026</span>
-                <span aria-hidden="true">|</span>
-                <span>7:30 PM</span>
               </div>
-              <p class="hero-venue-line">MB Greens, Clark Inn • Moradabad</p>
             </div>
           </div>
         </div>
@@ -1536,16 +1531,16 @@
             <circle cx="100" cy="30" r="2.6" fill="#EAD3A1"/>
           </svg>
 
-          <p class="section-kicker">Cordial Invitation</p>
-          <h2 class="section-title">Two Hearts, One Dua</h2>
+          <p class="section-kicker">With the Blessings of Allah (SWT)</p>
+          <h2 class="section-title">Cordial Invitation</h2>
           <p class="lineage-lead">
-            Together with our families, we joyfully invite you to witness and bless the sacred union of our beloved children.
+            With hearts filled with gratitude to Allah (SWT), and with the blessings and du’as of our loved ones, <strong>Mrs. &amp; Mr. Ishrat Husain</strong> joyfully invite you to celebrate the Nikah Ceremony of their beloved daughter
           </p>
 
           <div class="person-block">
             <div class="person-role">The Bride</div>
             <div class="person-name">Maleeha Ishrat</div>
-            <div class="person-parents">Beloved daughter of <strong>Mrs. &amp; Mr. Ishrat Husain</strong></div>
+            <div class="person-parents">Daughter of <strong>Mrs. &amp; Mr. Ishrat Husain</strong></div>
           </div>
 
           <div class="union-badge" aria-hidden="true">&amp;</div>
@@ -1553,7 +1548,7 @@
           <div class="person-block">
             <div class="person-role">The Groom</div>
             <div class="person-name">Syed Anfas</div>
-            <div class="person-parents">Beloved son of <strong>Mrs. &amp; Mr. Nadeem Akhtar</strong></div>
+            <div class="person-parents">Son of <strong>Mrs. &amp; Mr. Syed Nadeem Akhtar</strong></div>
           </div>
 
           <div class="ornate-divider" aria-hidden="true">
