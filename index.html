@@ -1271,95 +1271,6 @@
       line-height: 1.75;
     }
 
-    .closing-actions {
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .footer-utility-link {
-      margin-top: 34px;
-      display: inline-block;
-      font-size: 0.68rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(234, 211, 161, 0.52);
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    .footer-utility-link:hover {
-      color: var(--gold-light);
-    }
-
-    /* ============================================================
-       PERSONALIZE PHOTOS MODAL (DISCREET HOST TOOL)
-       ============================================================ */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 120;
-      background: rgba(25, 4, 9, 0.82);
-      backdrop-filter: blur(8px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-    }
-
-    .modal-backdrop.is-open {
-      display: flex;
-    }
-
-    .modal-sheet {
-      width: 100%;
-      max-width: 410px;
-      max-height: 86dvh;
-      overflow-y: auto;
-      background: var(--ivory);
-      color: var(--ink);
-      border-radius: 20px;
-      border: 1.5px solid var(--gold);
-      padding: 24px 20px;
-      text-align: left;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
-    }
-
-    .modal-title {
-      font-family: var(--font-serif);
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--burgundy);
-      margin-bottom: 6px;
-    }
-
-    .modal-sub {
-      font-size: 0.82rem;
-      color: var(--ink-muted);
-      margin-bottom: 16px;
-    }
-
-    .upload-group {
-      margin-bottom: 14px;
-      padding: 12px;
-      border-radius: 12px;
-      background: rgba(243, 217, 221, 0.25);
-      border: 1px dashed rgba(166, 124, 55, 0.6);
-    }
-
-    .upload-group label {
-      display: block;
-      font-size: 0.74rem;
-      font-weight: 600;
-      color: var(--burgundy);
-      margin-bottom: 6px;
-    }
-
     /* Toast feedback */
     .toast {
       position: fixed;
@@ -1789,48 +1700,10 @@
             Zaid Ishrat<br/>
             Suhaib Ishrat
           </div>
-
-          <div class="closing-actions">
-            <button id="footerReplayBtn" class="btn-gold" type="button">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="4" width="20" height="16" rx="2"/>
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-              </svg>
-              <span>Close &amp; Replay Envelope</span>
-            </button>
-          </div>
-
-          <button id="openPhotoToolBtn" class="footer-utility-link" type="button">
-            Personalize With Your Own Photos
-          </button>
         </div>
       </footer>
     </div>
   </main>
-
-  <!-- ============================================================
-       DISCREET PHOTO PERSONALIZATION MODAL
-       ============================================================ -->
-  <div id="photoModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
-    <div class="modal-sheet">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-        <h3 id="photoModalTitle" class="modal-title">Personalize Invitation Photos</h3>
-        <button id="closePhotoModalBtn" type="button" style="background: none; border: none; font-size: 1.4rem; color: var(--burgundy); cursor: pointer;" aria-label="Close modal">&times;</button>
-      </div>
-      <p class="modal-sub">
-        Select a photo from your phone or computer to place inside the blurred hero arch behind the names, then export an updated single-file HTML ready to share.
-      </p>
-
-      <div class="upload-group">
-        <label for="uploadHero">Hero Arch Background (blurred behind names)</label>
-        <input id="uploadHero" type="file" accept="image/*" />
-      </div>
-
-      <button id="exportHtmlBtn" class="btn-royal" type="button" style="width: 100%; margin-top: 6px;">
-        <span>Download Updated Single-File HTML</span>
-      </button>
-    </div>
-  </div>
 
   <!-- Toast Notification -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -1851,7 +1724,6 @@
       const mainCard = document.getElementById('mainCard');
       const floatingControls = document.getElementById('floatingControls');
       const replayEnvelopeBtn = document.getElementById('replayEnvelopeBtn');
-      const footerReplayBtn = document.getElementById('footerReplayBtn');
       const musicToggleBtn = document.getElementById('musicToggleBtn');
       const musicLabel = document.getElementById('musicLabel');
       const toastEl = document.getElementById('toast');
@@ -2090,7 +1962,6 @@
       openHintBtn.addEventListener('click', openEnvelope);
 
       replayEnvelopeBtn.addEventListener('click', replayEnvelope);
-      footerReplayBtn.addEventListener('click', replayEnvelope);
 
       /* ==========================================================
          SCROLL REVEALS
@@ -2193,66 +2064,6 @@
         }
       });
 
-      /* ==========================================================
-         DISCREET PHOTO PERSONALIZATION & SELF-CONTAINED EXPORT
-         ========================================================== */
-      const photoModal = document.getElementById('photoModal');
-      document.getElementById('openPhotoToolBtn').addEventListener('click', () => {
-        photoModal.classList.add('is-open');
-      });
-      document.getElementById('closePhotoModalBtn').addEventListener('click', () => {
-        photoModal.classList.remove('is-open');
-      });
-      photoModal.addEventListener('click', (e) => {
-        if (e.target === photoModal) photoModal.classList.remove('is-open');
-      });
-
-      function bindFileSwap(inputId, imgId, illustratedId) {
-        const input = document.getElementById(inputId);
-        input.addEventListener('change', (e) => {
-          const file = e.target.files && e.target.files[0];
-          if (!file) return;
-          const reader = new FileReader();
-          reader.onload = () => {
-            const img = document.getElementById(imgId);
-            img.src = reader.result;
-            img.style.display = 'block';
-            if (illustratedId) {
-              const ill = document.getElementById(illustratedId);
-              if (ill) ill.style.display = 'none';
-            }
-            showToast('Photo updated in live preview');
-          };
-          reader.readAsDataURL(file);
-        });
-      }
-
-      bindFileSwap('uploadHero', 'heroPhotoImg', null);
-
-      document.getElementById('exportHtmlBtn').addEventListener('click', () => {
-        // Reset envelope state cleanly in exported clone so recipients get the royal opening
-        photoModal.classList.remove('is-open');
-        const clone = document.documentElement.cloneNode(true);
-        const cloneBody = clone.querySelector('body');
-        cloneBody.classList.add('envelope-locked');
-        clone.querySelector('#envelopeOverlay').classList.remove('is-dismissed');
-        clone.querySelector('#envelopeWrapper').classList.remove('is-opening');
-        clone.querySelector('#mainCard').classList.remove('is-revealed');
-        clone.querySelector('#floatingControls').classList.remove('is-visible');
-        clone.querySelectorAll('input[type="file"]').forEach((inp) => { inp.value = ''; });
-
-        const htmlString = '<!DOCTYPE html>\n' + clone.outerHTML;
-        const blob = new Blob([htmlString], { type: 'text/html;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Maleeha-Syed-Anfas-Nikah-Invitation.html';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(url);
-        showToast('Updated single-file HTML downloaded');
-      });
     })();
   </script>
 </body>
