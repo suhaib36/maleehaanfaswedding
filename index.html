@@ -111,14 +111,14 @@
       box-shadow: 0 0 80px rgba(0, 0, 0, 0.72);
     }
 
-    /* Subtle velvet fabric sheen instead of busy patterns */
+    /* Fine organic floral lace mesh across burgundy velvet */
     .lace-texture-layer {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background:
-        radial-gradient(circle at 50% 45%, rgba(212, 175, 106, 0.06), transparent 65%),
-        radial-gradient(circle at 20% 80%, rgba(243, 217, 221, 0.04), transparent 55%);
+      opacity: 0.48;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none'%3E%3Cpath d='M0 35 L35 0 M0 70 L70 0 M0 105 L105 0 M0 140 L140 0 M35 140 L140 35 M70 140 L140 70 M105 140 L140 105' stroke='%23E8BFC5' stroke-opacity='0.09' stroke-width='0.7' stroke-dasharray='1.5 3'/%3E%3Cpath d='M140 35 L105 0 M140 70 L70 0 M140 105 L35 0 M140 140 L0 0 M105 140 L0 35 M70 140 L0 70 M35 140 L0 105' stroke='%23E8BFC5' stroke-opacity='0.09' stroke-width='0.7' stroke-dasharray='1.5 3'/%3E%3Cg stroke='%23F3D9DD' stroke-opacity='0.22' stroke-width='0.9'%3E%3Cpath d='M70 42 C78 36, 86 44, 80 54 C90 52, 94 64, 84 68 C90 78, 80 86, 70 78 C60 86, 50 78, 56 68 C46 64, 50 52, 60 54 C54 44, 62 36, 70 42 Z' fill='%23741B31' fill-opacity='0.28'/%3E%3Cpath d='M70 54 C74 54, 77 57, 77 61 C77 65, 74 68, 70 68 C66 68, 63 65, 63 61 C63 57, 66 54, 70 54 Z'/%3E%3Cpath d='M84 52 C98 44, 110 48, 114 58 C104 62, 92 60, 84 52 Z M56 72 C42 80, 30 76, 26 66 C36 62, 48 64, 56 72 Z'/%3E%3Cpath d='M70 78 C68 92, 62 104, 54 114 M70 42 C72 28, 78 16, 86 6' stroke-opacity='0.18'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-size: 132px 132px;
     }
 
     /* Inner rising arch invitation card inside pocket */
@@ -266,16 +266,22 @@
     }
 
     .flap-couple-script {
-      font-family: var(--font-script);
-      font-size: clamp(2.25rem, 8.6vw, 2.9rem);
-      line-height: 0.98;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2.1rem, 8vw, 2.65rem);
+      line-height: 1.04;
+      letter-spacing: 0.02em;
       color: var(--ivory);
-      text-shadow: 0 3px 16px rgba(0, 0, 0, 0.55);
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.52);
     }
 
     .flap-couple-amp {
       display: block;
-      font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.55rem, 5.8vw, 1.9rem);
       color: var(--gold-light);
       margin: 2px 0;
     }
@@ -1234,12 +1240,32 @@
         <div class="inner-card-date">18 • 12 • 2026</div>
       </div>
 
-      <!-- Lower Burgundy Velvet Pocket -->
+      <!-- Lower Burgundy Lace Pocket with Floral Embroidery -->
       <div class="lace-pocket-lower">
         <div class="lace-texture-layer" aria-hidden="true"></div>
+        <svg class="lace-corner-roses" viewBox="0 0 460 844" preserveAspectRatio="xMidYMax slice" fill="none" aria-hidden="true">
+          <!-- Bottom-right organic Chantilly floral rose & leaves (matching reference) -->
+          <g stroke="#E8BFC5" stroke-opacity="0.3" fill="#5A1324" fill-opacity="0.45">
+            <path d="M460 844 C410 785, 360 765, 305 718 C275 692, 250 658, 254 616 C288 634, 320 668, 342 706" stroke-width="1.3"/>
+            <path d="M294 712 C265 734, 228 730, 206 704 C238 688, 272 692, 294 712 Z" stroke-width="1.15"/>
+            <path d="M252 664 C224 658, 204 636, 202 608 C228 614, 246 634, 252 664 Z" stroke-width="1.15"/>
+            <path d="M356 742 C370 720, 398 712, 422 724 C434 748, 424 776, 404 790 C422 804, 416 832, 392 840 C366 844, 348 824, 346 802 C322 802, 308 780, 320 758 C330 744, 344 742, 356 742 Z" stroke-width="1.2"/>
+            <path d="M366 756 C378 746, 396 752, 398 768 C406 778, 398 796, 382 798 C368 802, 354 790, 356 774 C356 764, 360 758, 366 756 Z" stroke-width="1"/>
+            <path d="M376 768 C382 764, 388 768, 388 776 C388 782, 382 786, 376 784 C370 782, 368 772, 376 768 Z" fill="#D4AF6A" fill-opacity="0.22"/>
+            <!-- Secondary lace blossom -->
+            <path d="M286 784 C298 770, 318 774, 322 790 C334 798, 330 818, 314 824 C302 834, 282 826, 280 810 C268 802, 272 786, 286 784 Z" stroke-width="1.1"/>
+          </g>
+          <!-- Bottom-left lace rose leaves & stem -->
+          <g stroke="#E8BFC5" stroke-opacity="0.26" fill="#5A1324" fill-opacity="0.4">
+            <path d="M0 780 C48 738, 92 706, 136 658" stroke-width="1.3"/>
+            <path d="M64 722 C42 694, 44 664, 68 640 C84 666, 82 700, 64 722 Z" stroke-width="1.1"/>
+            <path d="M106 686 C114 656, 138 638, 164 640 C152 668, 132 684, 106 686 Z" stroke-width="1.1"/>
+            <path d="M34 796 C48 778, 72 782, 78 800 C90 812, 84 834, 66 840 C50 848, 30 838, 28 820 C16 812, 20 798, 34 796 Z" stroke-width="1.1"/>
+          </g>
+        </svg>
       </div>
 
-      <!-- Full-Bleed Scalloped Top Flap -->
+      <!-- Full-Bleed Scalloped Lace Top Flap -->
       <div class="lace-top-flap">
         <svg class="lace-flap-svg" viewBox="0 0 460 520" preserveAspectRatio="none" aria-hidden="true">
           <defs>
@@ -1248,11 +1274,19 @@
               <stop offset="65%" stop-color="#4A0E1D"/>
               <stop offset="100%" stop-color="#3E0B18"/>
             </linearGradient>
+            <pattern id="flapOrganicLace" width="128" height="128" patternUnits="userSpaceOnUse">
+              <path d="M0 32 L32 0 M0 64 L64 0 M0 96 L96 0 M0 128 L128 0 M32 128 L128 32 M64 128 L128 64 M96 128 L128 96" stroke="#E8BFC5" stroke-opacity="0.08" stroke-width="0.65" stroke-dasharray="1.5 3"/>
+              <path d="M128 32 L96 0 M128 64 L64 0 M128 96 L32 0 M128 128 L0 0 M96 128 L0 32 M64 128 L0 64 M32 128 L0 96" stroke="#E8BFC5" stroke-opacity="0.08" stroke-width="0.65" stroke-dasharray="1.5 3"/>
+              <path d="M64 38 C72 32, 80 40, 74 50 C84 48, 88 60, 78 64 C84 74, 74 82, 64 74 C54 82, 44 74, 50 64 C40 60, 44 48, 54 50 C48 40, 56 32, 64 38 Z" fill="rgba(116,27,49,0.22)" stroke="#F3D9DD" stroke-opacity="0.2" stroke-width="0.85"/>
+              <path d="M78 48 C92 40, 104 44, 108 54 C98 58, 86 56, 78 48 Z M50 68 C36 76, 24 72, 20 62 C30 58, 42 60, 50 68 Z" fill="none" stroke="#F3D9DD" stroke-opacity="0.18" stroke-width="0.8"/>
+            </pattern>
           </defs>
           <!-- Scalloped curved flap body -->
           <path d="M0,0 L460,0 L460,348 Q438,386 404,382 Q382,422 344,418 Q318,458 282,452 Q256,488 230,486 Q204,488 178,452 Q142,458 116,418 Q78,422 56,382 Q22,386 0,348 Z" fill="url(#flapBurgundyGrad)"/>
-          <!-- Clean thin gold scalloped edge trim -->
-          <path d="M0,348 Q22,386 56,382 Q78,422 116,418 Q142,458 178,452 Q204,488 230,486 Q256,488 282,452 Q318,458 344,418 Q382,422 404,382 Q438,386 460,348" fill="none" stroke="rgba(234,211,161,0.55)" stroke-width="1.4"/>
+          <path d="M0,0 L460,0 L460,348 Q438,386 404,382 Q382,422 344,418 Q318,458 282,452 Q256,488 230,486 Q204,488 178,452 Q142,458 116,418 Q78,422 56,382 Q22,386 0,348 Z" fill="url(#flapOrganicLace)"/>
+          <!-- Embroidered scallop lace trim -->
+          <path d="M0,348 Q22,386 56,382 Q78,422 116,418 Q142,458 178,452 Q204,488 230,486 Q256,488 282,452 Q318,458 344,418 Q382,422 404,382 Q438,386 460,348" fill="none" stroke="rgba(234,211,161,0.52)" stroke-width="1.5"/>
+          <path d="M0,338 Q22,374 56,371 Q78,410 116,406 Q142,445 178,440 Q204,475 230,473 Q256,475 282,440 Q318,445 344,406 Q382,410 404,371 Q438,374 460,338" fill="none" stroke="rgba(243,217,221,0.3)" stroke-width="1" stroke-dasharray="2 3"/>
         </svg>
 
         <div class="flap-content">
