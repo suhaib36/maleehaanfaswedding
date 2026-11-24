@@ -75,21 +75,20 @@
     }
 
     /* ============================================================
-       ROYAL REOPENABLE ENVELOPE OPENING OVERLAY
+       ROYAL REOPENABLE LACE ENVELOPE SPLASH SCREEN
+       (Burgundy velvet + floral lace scalloped flap + oval ivory seal)
        ============================================================ */
     #envelopeOverlay {
       position: fixed;
       inset: 0;
       z-index: 100;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      padding: max(22px, env(safe-area-inset-top)) 18px max(26px, env(safe-area-inset-bottom));
+      justify-content: center;
       background:
-        radial-gradient(circle at 50% 35%, rgba(122, 29, 51, 0.65) 0%, rgba(41, 7, 16, 0.96) 72%),
-        #2A0610;
-      transition: opacity 0.95s var(--ease-royal), visibility 0.95s var(--ease-royal), transform 0.95s var(--ease-royal);
+        radial-gradient(circle at 50% 30%, rgba(116, 27, 49, 0.52), rgba(29, 4, 10, 0.96)),
+        #23040C;
+      transition: opacity 0.9s var(--ease-royal), visibility 0.9s var(--ease-royal), transform 0.9s var(--ease-royal);
       overflow: hidden;
     }
 
@@ -97,179 +96,82 @@
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: scale(1.04);
-    }
-
-    /* Subtle monogram watermark pattern on opening screen */
-    .opening-watermark-bg {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.065;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Ctext x='80' y='88' text-anchor='middle' font-family='Georgia, serif' font-style='italic' font-size='26' fill='%23EBD5A3' letter-spacing='3'%3EM %26amp; A%3C/text%3E%3Cpath d='M80 28 C84 36 92 40 80 48 C68 40 76 36 80 28 Z' fill='none' stroke='%23EBD5A3' stroke-width='0.8'/%3E%3Ccircle cx='80' cy='80' r='54' fill='none' stroke='%23EBD5A3' stroke-width='0.5' stroke-dasharray='2 5'/%3E%3C/svg%3E");
-      background-size: 160px 160px;
-    }
-
-    /* Decorative outer royal border on opening screen */
-    .opening-frame {
-      position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(212, 175, 106, 0.34);
-      border-radius: 18px;
-      pointer-events: none;
-    }
-    .opening-frame::before {
-      content: "";
-      position: absolute;
-      inset: 5px;
-      border: 0.75px solid rgba(212, 175, 106, 0.18);
-      border-radius: 14px;
-    }
-
-    .opening-bismillah {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 360px;
-      padding-top: 4px;
-      animation: fadeDownIn 0.55s var(--ease-royal) both;
-    }
-
-    .bismillah-arabic {
-      font-family: var(--font-arabic);
-      font-size: clamp(1.55rem, 5.8vw, 2.05rem);
-      line-height: 1.55;
-      color: var(--gold-light);
-      text-shadow: 0 2px 18px rgba(212, 175, 106, 0.25);
-      letter-spacing: 0;
-      direction: rtl;
-    }
-
-    .bismillah-meaning {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(0.82rem, 2.9vw, 0.94rem);
-      color: rgba(250, 246, 240, 0.82);
-      letter-spacing: 0.03em;
-      margin-top: 2px;
-    }
-
-    .opening-monogram-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-      padding: 4px 16px;
-      border: 1px solid rgba(212, 175, 106, 0.35);
-      border-radius: 999px;
-      background: rgba(59, 11, 23, 0.55);
-      font-family: var(--font-serif);
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-    }
-
-    /* 3D Royal Envelope Stage */
-    .envelope-stage {
-      position: relative;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      perspective: 1400px;
-      margin: auto 0;
+      transform: scale(1.035);
     }
 
     .envelope-wrapper {
       position: relative;
-      width: min(84vw, 340px);
-      height: min(58vw, 234px);
+      width: 100%;
+      max-width: var(--card-max-w);
+      height: 100dvh;
+      perspective: 1600px;
       cursor: pointer;
-      transform-style: preserve-3d;
-      transition: transform 0.65s var(--ease-royal);
-      animation: floatGentle 4.8s ease-in-out infinite;
+      overflow: hidden;
+      background: linear-gradient(175deg, #4E1020 0%, #3A0A17 55%, #2B0610 100%);
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.72);
     }
 
-    .envelope-wrapper:active {
-      transform: scale(0.985);
-    }
-
-    .envelope-wrapper.is-opening {
-      animation: none;
-    }
-
-    /* Shadow beneath envelope */
-    .envelope-shadow {
-      position: absolute;
-      inset: 14px -6px -14px -6px;
-      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, transparent 72%);
-      filter: blur(12px);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* Envelope back interior */
-    .envelope-back {
+    /* Shared fine embroidered burgundy & champagne-blush lace mesh pattern */
+    .lace-texture-layer {
       position: absolute;
       inset: 0;
-      background: linear-gradient(155deg, #470E1C 0%, #68172B 100%);
-      border-radius: 12px;
-      border: 1.5px solid rgba(212, 175, 106, 0.65);
-      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.55), inset 0 0 30px rgba(0, 0, 0, 0.35);
-      z-index: 1;
+      pointer-events: none;
+      opacity: 0.42;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23E8BFC5' stroke-opacity='0.34'%3E%3Ccircle cx='60' cy='60' r='22' stroke-width='0.9' stroke-dasharray='2 2'/%3E%3Ccircle cx='60' cy='60' r='11' stroke-width='0.8'/%3E%3Ccircle cx='60' cy='60' r='3.5' fill='%23E8BFC5' fill-opacity='0.22' stroke='none'/%3E%3Cpath d='M60 28 C66 40 72 44 60 50 C48 44 54 40 60 28 Z M60 92 C66 80 72 76 60 70 C48 76 54 80 60 92 Z M28 60 C40 66 44 72 50 60 C44 48 40 54 28 60 Z M92 60 C80 66 76 72 70 60 C76 48 80 54 92 60 Z' stroke-width='0.85'/%3E%3Cpath d='M36 36 Q48 42 50 50 M84 36 Q72 42 70 50 M36 84 Q48 78 50 70 M84 84 Q72 78 70 70' stroke-width='0.7'/%3E%3Ccircle cx='0' cy='0' r='18' stroke-width='0.7' stroke-dasharray='1.5 2.5'/%3E%3Ccircle cx='120' cy='0' r='18' stroke-width='0.7' stroke-dasharray='1.5 2.5'/%3E%3Ccircle cx='0' cy='120' r='18' stroke-width='0.7' stroke-dasharray='1.5 2.5'/%3E%3Ccircle cx='120' cy='120' r='18' stroke-width='0.7' stroke-dasharray='1.5 2.5'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 112px 112px;
+      mix-blend-mode: screen;
     }
 
-    /* Inner rising invitation card */
+    /* Inner rising arch invitation card inside pocket */
     .envelope-inner-card {
       position: absolute;
       left: 7%;
       right: 7%;
+      top: 12%;
       bottom: 8%;
-      height: 88%;
       background: linear-gradient(180deg, #FAF6F0 0%, #F4E8DC 100%);
-      border-radius: 120px 120px 10px 10px;
+      border-radius: 210px 210px 18px 18px;
       border: 1.5px solid var(--gold);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.55);
       z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 18px 16px;
+      padding: 28px 22px;
       text-align: center;
-      transform: translateY(0) scale(0.96);
-      transition: transform 0.95s var(--ease-royal) 0.32s, box-shadow 0.95s var(--ease-royal) 0.32s;
+      opacity: 0;
+      transform: translateY(22%) scale(0.95);
+      transition: transform 0.9s var(--ease-royal) 0.25s, opacity 0.45s ease 0.22s;
+      pointer-events: none;
     }
 
     .envelope-inner-card::before {
       content: "";
       position: absolute;
-      inset: 6px;
-      border-radius: 114px 114px 6px 6px;
-      border: 1px dashed rgba(212, 175, 106, 0.65);
+      inset: 8px;
+      border-radius: 202px 202px 12px 12px;
+      border: 1px solid rgba(212, 175, 106, 0.55);
       pointer-events: none;
     }
 
     .envelope-wrapper.is-opening .envelope-inner-card {
-      transform: translateY(-64%) scale(1.02);
-      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45);
-      z-index: 4;
+      opacity: 1;
+      transform: translateY(-2%) scale(1);
     }
 
     .inner-card-kicker {
       font-family: var(--font-sans);
-      font-size: 0.62rem;
-      letter-spacing: 0.24em;
+      font-size: 0.65rem;
+      letter-spacing: 0.26em;
       text-transform: uppercase;
       color: var(--burgundy);
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
 
     .inner-card-names {
       font-family: var(--font-serif);
-      font-size: 1.38rem;
+      font-size: 1.85rem;
       font-weight: 600;
       color: var(--burgundy-deep);
       line-height: 1.15;
@@ -278,120 +180,163 @@
     .inner-card-date {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 0.88rem;
+      font-size: 1rem;
       color: var(--gold-dark);
-      margin-top: 6px;
+      margin-top: 10px;
     }
 
-    /* Front pocket (left, right, bottom flaps) */
-    .envelope-pocket {
+    /* Full-bleed Lower Burgundy Lace Pocket */
+    .lace-pocket-lower {
       position: absolute;
       inset: 0;
       z-index: 3;
-      border-radius: 12px;
+      background:
+        radial-gradient(circle at 50% 60%, rgba(116, 27, 49, 0.42), rgba(38, 6, 15, 0.92)),
+        linear-gradient(180deg, #4B0F1E 0%, #370914 100%);
+      transition: transform 0.85s var(--ease-royal) 0.18s, opacity 0.65s ease 0.28s;
       overflow: hidden;
-      pointer-events: none;
     }
 
-    .pocket-left, .pocket-right, .pocket-bottom {
+    .envelope-wrapper.is-opening .lace-pocket-lower {
+      transform: translateY(28%);
+      opacity: 0;
+    }
+
+    .lace-corner-roses {
       position: absolute;
       inset: 0;
-    }
-
-    .pocket-left {
-      background: linear-gradient(125deg, #65172B 0%, #4C0F1F 100%);
-      clip-path: polygon(0 0, 52% 52%, 0 100%);
-      border-left: 1px solid rgba(212, 175, 106, 0.5);
-    }
-
-    .pocket-right {
-      background: linear-gradient(235deg, #65172B 0%, #4C0F1F 100%);
-      clip-path: polygon(100% 0, 48% 52%, 100% 100%);
-      border-right: 1px solid rgba(212, 175, 106, 0.5);
-    }
-
-    .pocket-bottom {
-      background: linear-gradient(0deg, #561223 0%, #6D1A2F 100%);
-      clip-path: polygon(0 100%, 50% 42%, 100% 100%);
-      box-shadow: inset 0 2px 10px rgba(234, 211, 161, 0.22);
-    }
-
-    /* Gold V-trim along pocket top edge */
-    .pocket-gold-v {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
+      opacity: 0.88;
     }
 
-    /* Top hinged flap */
-    .envelope-flap {
+    /* Full-bleed Scalloped Lace Top Flap */
+    .lace-top-flap {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 62%;
-      z-index: 5;
+      height: 61%;
+      z-index: 4;
       transform-origin: top center;
       transform: rotateX(0deg);
-      transition: transform 0.75s var(--ease-royal);
+      transition: transform 0.85s var(--ease-royal) 0.08s, opacity 0.55s ease 0.45s;
+      filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.65));
       pointer-events: none;
-      filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.42));
     }
 
-    .envelope-wrapper.is-opening .envelope-flap {
-      transform: rotateX(175deg);
+    .envelope-wrapper.is-opening .lace-top-flap {
+      transform: rotateX(165deg);
+      opacity: 0;
       z-index: 1;
     }
 
-    .envelope-flap-shape {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, #741B31 0%, #581224 100%);
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-      border-top: 1.5px solid rgba(212, 175, 106, 0.8);
-      position: relative;
-    }
-
-    .envelope-flap-shape::after {
-      content: "";
+    .lace-flap-svg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 35%, rgba(234, 211, 161, 0.16), transparent 65%);
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
-    /* 3D Royal Wax Seal with Couple Initials M & A */
+    .flap-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: max(22px, env(safe-area-inset-top)) 26px 70px;
+      text-align: center;
+    }
+
+    .opening-bismillah {
+      animation: fadeDownIn 0.55s var(--ease-royal) both;
+      margin-bottom: auto;
+    }
+
+    .bismillah-arabic {
+      font-family: var(--font-arabic);
+      font-size: clamp(1.38rem, 5.2vw, 1.78rem);
+      line-height: 1.5;
+      color: var(--gold-light);
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+      letter-spacing: 0;
+      direction: rtl;
+    }
+
+    .bismillah-meaning {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(0.75rem, 2.7vw, 0.86rem);
+      color: rgba(250, 246, 240, 0.84);
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+    }
+
+    .flap-invite-group {
+      margin: auto 0 18px;
+      animation: fadeDownIn 0.65s var(--ease-royal) 0.06s both;
+    }
+
+    .flap-lead-line {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(0.88rem, 3.2vw, 1rem);
+      color: rgba(250, 246, 240, 0.92);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+      margin-bottom: 12px;
+    }
+
+    .flap-couple-script {
+      font-family: var(--font-script);
+      font-size: clamp(2.25rem, 8.6vw, 2.9rem);
+      line-height: 0.98;
+      color: var(--ivory);
+      text-shadow: 0 3px 16px rgba(0, 0, 0, 0.55);
+    }
+
+    .flap-couple-amp {
+      display: block;
+      font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+      color: var(--gold-light);
+      margin: 2px 0;
+    }
+
+    /* Vertical Oval Ivory-Pearl Wax Seal (matching reference) */
     .wax-seal-btn {
       position: absolute;
       left: 50%;
-      top: 56%;
+      top: 56.5%;
       transform: translate(-50%, -50%);
       z-index: 6;
-      width: 78px;
-      height: 78px;
+      width: 74px;
+      height: 92px;
       border-radius: 50%;
       border: none;
       cursor: pointer;
       background: transparent;
       padding: 0;
-      transition: transform 0.45s var(--ease-royal), opacity 0.45s ease;
+      transition: transform 0.4s var(--ease-royal), opacity 0.35s ease;
     }
 
     .wax-seal-btn:hover {
-      transform: translate(-50%, -50%) scale(1.07);
+      transform: translate(-50%, -50%) scale(1.06);
     }
 
     .envelope-wrapper.is-opening .wax-seal-btn {
-      transform: translate(-50%, -85%) scale(0.7);
+      transform: translate(-50%, -82%) scale(0.76);
       opacity: 0;
       pointer-events: none;
     }
 
     .seal-pulse {
       position: absolute;
-      inset: -10px;
+      inset: -9px;
       border-radius: 50%;
-      border: 1.5px solid rgba(234, 211, 161, 0.55);
+      border: 1.5px solid rgba(250, 246, 240, 0.45);
       animation: sealRipple 2.4s ease-out infinite;
     }
 
@@ -400,81 +345,60 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background: radial-gradient(circle at 32% 28%, #EED59D 0%, #C79B4B 44%, #8E6526 88%, #6B4817 100%);
+      background: radial-gradient(circle at 34% 26%, #FFFFFF 0%, #FAF5EE 42%, #EBE0D0 78%, #D4C1A7 100%);
       box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.55),
-        inset 0 2px 5px rgba(255, 248, 225, 0.75),
-        inset 0 -4px 8px rgba(72, 42, 9, 0.65);
+        0 14px 30px rgba(0, 0, 0, 0.58),
+        inset 0 3px 6px rgba(255, 255, 255, 0.95),
+        inset 0 -5px 10px rgba(155, 130, 100, 0.45);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
     }
 
     .seal-ring {
       position: absolute;
-      inset: 6px;
+      inset: 7px;
       border-radius: 50%;
-      border: 1.25px solid rgba(94, 20, 38, 0.45);
-      box-shadow: inset 0 1px 2px rgba(255, 248, 225, 0.55);
+      border: 1.5px solid rgba(190, 168, 138, 0.55);
+      box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        0 1px 2px rgba(135, 110, 82, 0.25);
     }
 
-    .seal-initials {
-      font-family: var(--font-serif);
-      font-weight: 700;
-      font-style: italic;
-      font-size: 1.28rem;
-      letter-spacing: 0.04em;
-      color: #490E1D;
-      text-shadow: 0 1px 0 rgba(255, 243, 210, 0.65);
-      line-height: 1;
+    .seal-sprig {
+      width: 34px;
+      height: 52px;
+      opacity: 0.72;
     }
 
-    .seal-sub {
-      font-family: var(--font-sans);
-      font-size: 0.48rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #5E1426;
-      margin-top: 2px;
-    }
-
-    .opening-cta {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      animation: fadeUpIn 0.6s var(--ease-royal) 0.08s both;
-    }
-
-    .opening-invite-title {
-      font-family: var(--font-serif);
-      font-size: clamp(1.15rem, 4.2vw, 1.4rem);
-      color: var(--ivory);
-      letter-spacing: 0.04em;
-      margin-bottom: 6px;
-    }
-
-    .opening-tap-hint {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-sans);
-      font-size: 0.76rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-light);
+    /* "Tap the Invitation" cue below oval seal */
+    .tap-invitation-btn {
+      position: absolute;
+      left: 50%;
+      top: calc(56.5% + 66px);
+      transform: translateX(-50%);
+      z-index: 6;
+      background: none;
+      border: none;
       padding: 8px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(212, 175, 106, 0.4);
-      background: rgba(59, 11, 23, 0.65);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(0.95rem, 3.4vw, 1.08rem);
+      color: rgba(250, 246, 240, 0.94);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+      letter-spacing: 0.03em;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
+      white-space: nowrap;
+      transition: opacity 0.35s ease, transform 0.35s ease;
     }
 
-    .opening-tap-hint:hover {
-      background: rgba(116, 27, 49, 0.85);
-      transform: translateY(-1px);
+    .tap-invitation-btn:hover {
+      color: var(--gold-light);
+    }
+
+    .envelope-wrapper.is-opening .tap-invitation-btn {
+      opacity: 0;
+      pointer-events: none;
     }
 
     /* Gold shimmer particles during envelope opening */
@@ -1323,70 +1247,116 @@
 <body class="envelope-locked">
 
   <!-- ============================================================
-       ROYAL REOPENABLE ENVELOPE OPENING OVERLAY
+       ROYAL REOPENABLE LACE ENVELOPE SPLASH SCREEN
        ============================================================ -->
   <section id="envelopeOverlay" aria-label="Royal Wedding Envelope Opening">
-    <div class="opening-watermark-bg" aria-hidden="true"></div>
-    <div class="opening-frame" aria-hidden="true"></div>
+    <div id="envelopeWrapper" class="envelope-wrapper">
 
-    <!-- Top Bismillah Calligraphy & Meaning + Couple Initials -->
-    <header class="opening-bismillah">
-      <div class="bismillah-arabic" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-      <p class="bismillah-meaning">In the name of Allah, the Most Gracious, the Most Merciful</p>
-      <div class="opening-monogram-pill">
-        <span>M</span>
-        <span style="font-family: var(--font-script); font-size: 1rem; text-transform: none; letter-spacing: 0;">&amp;</span>
-        <span>A</span>
+      <!-- Emerging Ivory Arch Card Preview -->
+      <div class="envelope-inner-card">
+        <div class="inner-card-kicker">Nikkah Ceremony</div>
+        <div class="inner-card-names">Maleeha<br/><span style="font-family: var(--font-script); color: var(--burgundy-rich); font-size: 1.55rem;">&amp;</span><br/>Syed Anfas</div>
+        <div class="inner-card-date">18 • 12 • 2026</div>
       </div>
-    </header>
 
-    <!-- 3D Envelope with Wax Seal -->
-    <div class="envelope-stage">
-      <div id="envelopeWrapper" class="envelope-wrapper">
-        <div class="envelope-shadow"></div>
-        <div class="envelope-back"></div>
+      <!-- Lower Burgundy Lace Pocket with Floral Lace Corner Motifs -->
+      <div class="lace-pocket-lower">
+        <div class="lace-texture-layer" aria-hidden="true"></div>
+        <svg class="lace-corner-roses" viewBox="0 0 460 844" preserveAspectRatio="xMidYMax slice" fill="none" aria-hidden="true">
+          <!-- Bottom-right raised floral lace rose & leaves -->
+          <g stroke="#E8BFC5" stroke-opacity="0.34" fill="#741B31" fill-opacity="0.45">
+            <path d="M460 844 C410 790, 355 770, 305 730 C275 705, 250 670, 255 628 C292 645, 325 680, 345 715" stroke-width="1.4"/>
+            <path d="M295 720 C268 745, 232 740, 210 715 C242 698, 275 700, 295 720 Z" stroke-width="1.2"/>
+            <path d="M250 672 C222 668, 200 645, 198 618 C225 622, 245 642, 250 672 Z" stroke-width="1.2"/>
+            <circle cx="385" cy="765" r="56" stroke-width="1.3" stroke-dasharray="3 3"/>
+            <circle cx="385" cy="765" r="38" stroke-width="1.2"/>
+            <circle cx="385" cy="765" r="20" stroke-width="1.2"/>
+            <circle cx="385" cy="765" r="7" fill="#D4AF6A" fill-opacity="0.35"/>
+            <path d="M385 709 C405 725, 405 745, 385 755 C365 745, 365 725, 385 709 Z M441 765 C425 785, 405 785, 395 765 C405 745, 425 745, 441 765 Z M385 821 C365 805, 365 785, 385 775 C405 785, 405 805, 385 821 Z M329 765 C345 745, 365 745, 375 765 C365 785, 345 785, 329 765 Z" stroke-width="1.15"/>
+            <!-- Smaller companion lace flower -->
+            <circle cx="292" cy="795" r="34" stroke-width="1.1" stroke-dasharray="2 3"/>
+            <circle cx="292" cy="795" r="18" stroke-width="1.1"/>
+            <circle cx="292" cy="795" r="5" fill="#E8BFC5" fill-opacity="0.3"/>
+          </g>
+          <!-- Bottom-left lace leaves & floral border -->
+          <g stroke="#E8BFC5" stroke-opacity="0.3" fill="#741B31" fill-opacity="0.4">
+            <path d="M0 780 C45 740, 88 712, 132 665" stroke-width="1.4"/>
+            <path d="M62 726 C40 698, 42 668, 65 645 C82 670, 80 704, 62 726 Z" stroke-width="1.2"/>
+            <path d="M104 692 C110 662, 134 644, 160 644 C150 672, 130 688, 104 692 Z" stroke-width="1.2"/>
+            <circle cx="48" cy="806" r="46" stroke-width="1.2" stroke-dasharray="3 3"/>
+            <circle cx="48" cy="806" r="24" stroke-width="1.1"/>
+          </g>
+          <!-- Left & right side botanical lace stems -->
+          <g stroke="#D4AF6A" stroke-opacity="0.22" fill="none">
+            <path d="M0 590 C36 575, 62 552, 82 520" stroke-width="1.2"/>
+            <path d="M460 598 C422 582, 396 558, 374 522" stroke-width="1.2"/>
+          </g>
+        </svg>
+      </div>
 
-        <!-- Emerging Arch Card Preview -->
-        <div class="envelope-inner-card">
-          <div class="inner-card-kicker">Nikkah Ceremony</div>
-          <div class="inner-card-names">Maleeha<br/><span style="font-family: var(--font-script); color: var(--burgundy-rich); font-size: 1.25rem;">&amp;</span><br/>Syed Anfas</div>
-          <div class="inner-card-date">18 • 12 • 2026</div>
+      <!-- Full-Bleed Scalloped Lace Top Flap -->
+      <div class="lace-top-flap">
+        <svg class="lace-flap-svg" viewBox="0 0 460 520" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="flapBurgundyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5E1426"/>
+              <stop offset="65%" stop-color="#4A0E1D"/>
+              <stop offset="100%" stop-color="#3E0B18"/>
+            </linearGradient>
+            <pattern id="flapLacePat" width="92" height="92" patternUnits="userSpaceOnUse">
+              <circle cx="46" cy="46" r="18" fill="none" stroke="#E8BFC5" stroke-opacity="0.24" stroke-width="0.9" stroke-dasharray="2 2"/>
+              <circle cx="46" cy="46" r="8" fill="none" stroke="#D4AF6A" stroke-opacity="0.22" stroke-width="0.8"/>
+              <path d="M46 18 C52 28 56 32 46 38 C36 32 40 28 46 18 Z M46 74 C52 64 56 60 46 54 C36 60 40 64 46 74 Z M18 46 C28 52 32 56 38 46 C32 36 28 40 18 46 Z M74 46 C64 52 60 56 54 46 C60 36 64 40 74 46 Z" fill="none" stroke="#E8BFC5" stroke-opacity="0.22" stroke-width="0.8"/>
+              <circle cx="0" cy="0" r="14" fill="none" stroke="#E8BFC5" stroke-opacity="0.18" stroke-width="0.7"/>
+              <circle cx="92" cy="0" r="14" fill="none" stroke="#E8BFC5" stroke-opacity="0.18" stroke-width="0.7"/>
+              <circle cx="0" cy="92" r="14" fill="none" stroke="#E8BFC5" stroke-opacity="0.18" stroke-width="0.7"/>
+              <circle cx="92" cy="92" r="14" fill="none" stroke="#E8BFC5" stroke-opacity="0.18" stroke-width="0.7"/>
+            </pattern>
+          </defs>
+          <!-- Scalloped curved flap body -->
+          <path d="M0,0 L460,0 L460,348 Q438,386 404,382 Q382,422 344,418 Q318,458 282,452 Q256,488 230,486 Q204,488 178,452 Q142,458 116,418 Q78,422 56,382 Q22,386 0,348 Z" fill="url(#flapBurgundyGrad)"/>
+          <path d="M0,0 L460,0 L460,348 Q438,386 404,382 Q382,422 344,418 Q318,458 282,452 Q256,488 230,486 Q204,488 178,452 Q142,458 116,418 Q78,422 56,382 Q22,386 0,348 Z" fill="url(#flapLacePat)"/>
+          <!-- Embroidered scallop lace rim & floral medallions -->
+          <path d="M0,348 Q22,386 56,382 Q78,422 116,418 Q142,458 178,452 Q204,488 230,486 Q256,488 282,452 Q318,458 344,418 Q382,422 404,382 Q438,386 460,348" fill="none" stroke="rgba(234,211,161,0.52)" stroke-width="1.6"/>
+          <path d="M0,338 Q22,374 56,371 Q78,410 116,406 Q142,445 178,440 Q204,475 230,473 Q256,475 282,440 Q318,445 344,406 Q382,410 404,371 Q438,374 460,338" fill="none" stroke="rgba(243,217,221,0.34)" stroke-width="1.1" stroke-dasharray="2.5 3"/>
+        </svg>
+
+        <div class="flap-content">
+          <header class="opening-bismillah">
+            <div class="bismillah-arabic" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+            <p class="bismillah-meaning">In the name of Allah, the Most Gracious, the Most Merciful</p>
+          </header>
+
+          <div class="flap-invite-group">
+            <p class="flap-lead-line">Join us as we share a day filled with love and joy.</p>
+            <div class="flap-couple-script">
+              Maleeha
+              <span class="flap-couple-amp">&amp;</span>
+              Anfas
+            </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Front Pocket Flaps -->
-        <div class="envelope-pocket">
-          <div class="pocket-left"></div>
-          <div class="pocket-right"></div>
-          <div class="pocket-bottom"></div>
-          <svg class="pocket-gold-v" viewBox="0 0 340 234" preserveAspectRatio="none" aria-hidden="true">
-            <polyline points="0,0 170,122 340,0" fill="none" stroke="rgba(234,211,161,0.55)" stroke-width="1.3"/>
-            <polyline points="0,234 170,98 340,234" fill="none" stroke="rgba(234,211,161,0.45)" stroke-width="1.1"/>
+      <!-- Vertical Oval Ivory Wax Seal with Embossed Botanical Sprig -->
+      <button id="waxSealBtn" class="wax-seal-btn" type="button" aria-label="Tap Wax Seal to Open Invitation">
+        <span class="seal-pulse" aria-hidden="true"></span>
+        <span class="seal-body">
+          <span class="seal-ring" aria-hidden="true"></span>
+          <svg class="seal-sprig" viewBox="0 0 40 60" fill="none" aria-hidden="true">
+            <path d="M20 50 C20 35, 20 20, 21 10" stroke="#9F8668" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M20 38 C13 35, 10 29, 13 24 C17 26, 20 31, 20 38 Z" fill="rgba(182,158,128,0.35)" stroke="#9F8668" stroke-width="1"/>
+            <path d="M20 30 C27 27, 30 21, 27 16 C23 18, 20 23, 20 30 Z" fill="rgba(182,158,128,0.35)" stroke="#9F8668" stroke-width="1"/>
+            <circle cx="21" cy="11" r="3" fill="rgba(182,158,128,0.4)" stroke="#9F8668" stroke-width="0.9"/>
+            <circle cx="15" cy="18" r="2.2" fill="rgba(182,158,128,0.35)" stroke="#9F8668" stroke-width="0.9"/>
+            <circle cx="26" cy="36" r="2.2" fill="rgba(182,158,128,0.35)" stroke="#9F8668" stroke-width="0.9"/>
           </svg>
-        </div>
+        </span>
+      </button>
 
-        <!-- Hinged Top Flap -->
-        <div class="envelope-flap">
-          <div class="envelope-flap-shape"></div>
-        </div>
-
-        <!-- Wax Seal Stamped with M & A -->
-        <button id="waxSealBtn" class="wax-seal-btn" type="button" aria-label="Tap Wax Seal to Open Invitation">
-          <span class="seal-pulse" aria-hidden="true"></span>
-          <span class="seal-body">
-            <span class="seal-ring" aria-hidden="true"></span>
-            <span class="seal-initials">M&amp;A</span>
-            <span class="seal-sub">Nikah</span>
-          </span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Bottom Prompt -->
-    <div class="opening-cta">
-      <p class="opening-invite-title">An Invitation From the Bride’s Family</p>
-      <button id="openHintBtn" class="opening-tap-hint" type="button">
-        <span>Tap Seal to Open</span>
-        <span aria-hidden="true">✦</span>
+      <!-- Prompt below seal -->
+      <button id="openHintBtn" class="tap-invitation-btn" type="button">
+        Tap the Invitation
       </button>
     </div>
   </section>
